@@ -130,12 +130,11 @@ bool run_ac3(const vector<vector<char>> &input,
     while (!work_list.empty()) {
         pair<int, int> top = work_list.front();
         work_list.pop();
-        vector<pair<int, int>> neighbours =
-            util::get_neighbour_postions(top.first, top.second);
+        vector<pair<int, int>> neighbours = util::get_neighbour_postions(top.first, top.second);
 
         char current_char = input[top.first][top.second];
 
-        int current_char_domain_ind = top.first * M + top.second;
+        int current_char_domain_ind = util::map_position_to_index(top.first, top.second);
 
         vector<char> new_domain;
 
@@ -143,8 +142,7 @@ bool run_ac3(const vector<vector<char>> &input,
             map<char, set<int>> occurance;
             set<int> neighbours_with;
             for (pair<int, int> neighbour : neighbours) {
-                int neighbour_domain_ind =
-                    neighbour.first * M + neighbour.second;
+                int neighbour_domain_ind = util::map_position_to_index(neighbour.first, neighbour.second);
                 for (char neighbour_domain : domains[neighbour_domain_ind]) {
                     if (abs(curr_domain - neighbour_domain) == 1) {
                         neighbours_with.insert(neighbour_domain_ind);
