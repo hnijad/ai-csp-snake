@@ -27,7 +27,7 @@ To run the input case
 ## Implementation
 ```util``` namespace contains some utility functios to use during the CSP implmentation such as checking if the position is valid on board, getting neigbors on grid and so on. <br>
 ```backtrack``` function is the main function to find the solution. it recursively tries to find solution. In each recursion
-it filters out partiall assigned grid if it alreadt violates the condition thus reducing the search space. In addition it reduces the domain for each variable using AC3(Arc consistency) algorithm.
+it filters out partially assigned grid if it already violates the condition, thus reducing the search space. In addition it reduces the domain for each variable using AC3(Arc consistency) algorithm.
 
 
 ## Dependencies
