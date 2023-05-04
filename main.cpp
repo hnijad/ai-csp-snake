@@ -202,7 +202,7 @@ bool not_satisfied(const vector<vector<char>> &domains, const vector<vector<bool
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
-            char cell = domains[i * M + j][0];
+            char cell = domains[util::map_position_to_index(i,j)][0];
             vector<pair<int, int>> neighbours = util::get_neighbour_postions(i, j);
             map<char, int> neigbors_cells;
 
