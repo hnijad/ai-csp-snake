@@ -56,12 +56,17 @@ vector<pair<int, int>> get_neighbour_postions(int x, int y) {
     return neighbours;
 }
 
+char get_last_letter() {
+    return  'A' + (N * M - 1);
+}
+
 vector<char> get_consecutive_letters(char letter) {
     if (letter == 'A') {
         return {'B'};
     }
-    if (letter == 'Y') {
-        return {'X'};
+    char last_letter = get_last_letter();
+    if (letter == last_letter) {
+        return {(char) (last_letter - 1)};
     }
     return {(char)(letter - 1), (char)(letter + 1)};
 }
@@ -70,7 +75,8 @@ vector<char> get_consecutive_letters(char letter) {
 vector<char> get_possible_domain(char curr) {
     if (curr == '-') {
         vector<char> letters;
-        for (char ch = 'A'; ch <= 'Y'; ch++) {
+        char last_letter = get_last_letter();
+        for (char ch = 'A'; ch <= last_letter; ch++) {
             letters.push_back(ch);
         }
         return letters;
